@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Main page
+{% endblock %}
+
+{% block title_visible %}
+    Main
+{% endblock %}
+
+
+{% block body %}
+    {% for t in tutors %}
+        {% if forloop.counter|divisibleby:2 %}
+            <div class="row">
+        {% endif %}
+    <div class="col-md-6">
+        {% include 'tutor_short.html' with tutor=t %}
+    </div>
+    {% if forloop.counter|divisibleby:2 or forloop.last %}
+        </div>
+    {% endif %}
+
+    {% empty %}
+        The list is empty.
+    {% endfor %}
+
+{% endblock %}
